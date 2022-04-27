@@ -28,4 +28,13 @@ public class Square {
     public void setGameObject(GameObject gameObject) {
         this.gameObject = gameObject;
     }
+
+    public boolean addGameObject(GameObject gameObject){
+        if(this.gameObject!=null){
+            this.gameObject.occupiedMessage();
+            return false;
+        }
+        setGameObject(gameObject);
+        return true;
+    }
 }

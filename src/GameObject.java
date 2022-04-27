@@ -30,5 +30,6 @@ public class GameObject {
 
     public void occupiedMessage()
     {
+        System.out.println("not supposed to be here :)");
     }
 }

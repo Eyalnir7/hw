@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class Main {
     public static Random rnd;       // Note: Do not change this line.
     public static Scanner scanner;  // Note: Do not change this line.
+    public static final int BOARD_START = 1, BOARD_END = 100; // Board size
 
 
     public static void main(String[] args) throws IOException {

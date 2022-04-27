@@ -1,11 +1,11 @@
 public class Snake extends  GameObject {
     public Snake(int head, int len) throws Exception{
         super(head, head - len);
-        if (getStart() > 100 || getStart() < 0)
+        if (getStart() > Main.BOARD_END || getStart() < Main.BOARD_START)
             wrongSquareMessage();
-        if (getFinish() > 100 || getFinish() < 0)
+        if (getFinish() > Main.BOARD_END || getFinish() < Main.BOARD_START)
             tooLongMessage();
-        if(getFinish() == 100)
+        if(getFinish() == Main.BOARD_END)
             lastSquareMessage();
 
     }

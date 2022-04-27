@@ -1,9 +1,9 @@
 public class Ladder extends GameObject{
     public Ladder(int base, int len) throws Exception{
         super(base, base + len);
-        if (getStart() > 100 || getStart() < 0)
+        if (getStart() > Main.BOARD_END || getStart() < Main.BOARD_START)
             wrongSquareMessage();
-        if (getFinish() > 100 || getFinish() < 0)
+        if (getFinish() > Main.BOARD_END || getFinish() < Main.BOARD_START)
             tooLongMessage();
     }
 
