@@ -27,14 +27,14 @@ public class SnakesAndLaddersGame {
             if(input.equals("end")){
                 if(playerCount>=2) break;
                 else {
-                    System.out.println("Cannot start the game, there are less than two players!");
+                    System.out.println("Cannot start the game, there are less then two players!");
                     continue;
                 }
             }
             splitInput = input.split(" ");
             handleInput(splitInput);
         }
-        sortPlayers(players, 0 , players.length - 1);
+        sortPlayers(players, 0 , playerCount - 1);
     }
 
     //Handles the given input from the user about the game
@@ -130,7 +130,7 @@ public class SnakesAndLaddersGame {
         // Initial index of merged subarray array
         int k = l;
         while (i < n1 && j < n2) {
-            if (L[i].getName().compareTo(R[j].getName()) > 0) {
+            if (L[i].getName().compareTo(R[j].getName()) < 0) {
                 arr[k] = L[i];
                 i++;
             }

@@ -22,7 +22,7 @@ public class Snake extends  GameObject {
 
     //Sends a message because the snake is too long
     public void tooLongMessage() throws Exception {
-        System.out.println("The snake is to long!");
+        System.out.println("The snake is too long!");
         throw new Exception("snake too long");
     }
 
