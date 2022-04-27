@@ -1,9 +1,9 @@
-public class Snake extends  GameObject {
-    public Snake(int head, int len){
-        super(head, head - len);
+public class Ladder extends GameObject{
+    public Ladder(int base, int len){
+        super(base, base + len);
         if (getStart() > 100 || getStart() < 0)
             wrongSquareMessage();
-        if (super.getFinish() > 100 || super.getFinish() < 0)
+        if (getFinish() > 100 || getFinish() < 0)
             tooLongMessage();
     }
 
@@ -13,6 +13,6 @@ public class Snake extends  GameObject {
 
     public void tooLongMessage()
     {
-        System.out.println("The snake is to long!");
+        System.out.println("The ladder is to long!");
     }
 }

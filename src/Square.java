@@ -1,25 +1,11 @@
 public class Square {
     private int squareNumber;
-    private Snake snake;
-    private Ladder ladder;
+    private GameObject gameObject;
 
-    public Square(int squareNumber, Snake snake, Ladder ladder)
+    public Square(int squareNumber, GameObject gameObject)
     {
         this.squareNumber = squareNumber;
-        this.snake = snake;
-        this.ladder = ladder;
-    }
-
-    public Square(int squareNumber, Snake snake)
-    {
-        this.squareNumber = squareNumber;
-        this.snake = snake;
-    }
-
-    public Square(int squareNumber, Ladder ladder)
-    {
-        this.squareNumber = squareNumber;
-        this.ladder = ladder;
+        this.gameObject = gameObject;
     }
 
     public Square(int squareNumber)
@@ -27,19 +13,19 @@ public class Square {
         this.squareNumber = squareNumber;
     }
 
-    public Snake getSnake() {
-        return snake;
+    public int getSquareNumber() {
+        return squareNumber;
     }
 
-    public void setSnake(Snake snake) {
-        this.snake = snake;
+    public void setSquareNumber(int squareNumber) {
+        this.squareNumber = squareNumber;
     }
 
-    public Ladder getLadder() {
-        return ladder;
+    public GameObject getGameObject() {
+        return gameObject;
     }
 
-    public void setLadder(Ladder ladder) {
-        this.ladder = ladder;
+    public void setGameObject(GameObject gameObject) {
+        this.gameObject = gameObject;
     }
 }
