@@ -1,3 +1,4 @@
+//Game pieces have a color and a location on the board
 public class GamePiece {
     private Color color;
     private int location;
@@ -5,7 +6,7 @@ public class GamePiece {
     public GamePiece(Color color)
     {
         this.color = color;
-        this.location = 1;
+        this.location = Main.BOARD_START;
     }
 
     public Color getColor()
@@ -26,11 +27,19 @@ public class GamePiece {
         this.location = location;
     }
 
+    /*Moves the game pieces num steps forward.
+    If the piece reaches the end of the board and still has x steps to go forward
+    then it will go x steps backwards.
+    If the piece reaches the beginning of the board and still has x steps to go backward
+    then it will go x steps forward.
+     */
     public void addToLocation(int num)
     {
-        if(this.location + num > 100)
-            this.location = 100 - (this.location + num)%100;
+        if(this.location + num > Main.BOARD_END)
+            this.location = Main.BOARD_END - (this.location + num)%Main.BOARD_END;
+        else if (this.location + num < Main.BOARD_START)
+            this.location = -1 * (this.location + num);
         else
-            this.location = location + num;
+            this.location = this.location + num;
     }
 }
