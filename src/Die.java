@@ -5,7 +5,7 @@ public class Die {
     private int lowestValue;
     private int highestValue;
 
-    public Die(int lowestValue, int highestValue)
+    public Die(int highestValue, int lowestValue)
     {
         this.lowestValue = lowestValue;
         this.highestValue = highestValue;

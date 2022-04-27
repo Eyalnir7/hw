@@ -64,4 +64,29 @@ public class SnakesAndLaddersGame {
         }
     }
 
+    private void start()
+    {
+        boolean play = true;
+        int round = 1;
+        while(play)
+        {
+            System.out.println("------------------------- Round number " + round + " -------------------------");
+            for(int i = 0; i < players.length; i++)
+            {
+                int rolledValue = die.roll();
+                int lastLocation = players[i].getGamePiece().getLocation();
+                players[i].getGamePiece().addToLocation(rolledValue);
+                System.out.print(players[i].getName() + " rolled " + rolledValue + ". The path to the next square: " + lastLocation + " ->" + players[i].getGamePiece().getLocation());
+                GameObject gameObject = gameBoard.getGameBoard()[players[i].getGamePiece().getLocation() - 1].getGameObject();
+                if(gameObject != null) {
+                    players[i].getGamePiece().setLocation(gameObject.getFinish());
+                    System.out.print(" ->" + players[i].getGamePiece().getLocation());
+                }
+                System.out.println("");
+            }
+            System.out.println("");
+            round++;
+        }
+    }
+
 }

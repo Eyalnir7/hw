@@ -8,4 +8,12 @@ public class GameBoard {
     public boolean addGameObject(GameObject gameObject){
         return this.gameBoard[gameObject.getStart()].addGameObject(gameObject);
     }
+
+    public Square[] getGameBoard() {
+        return gameBoard;
+    }
+
+    public void setGameBoard(Square[] gameBoard) {
+        this.gameBoard = gameBoard;
+    }
 }
