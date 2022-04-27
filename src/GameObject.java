@@ -23,8 +23,12 @@ public class GameObject {
         this.finish = finish;
     }
 
-    public void wrongSquareMessage()
+    public void wrongSquareMessage() throws Exception{
+        System.out.println("The square is not within the board's boundaries!");
+        throw new Exception("square out of bounds");
+    }
+
+    public void occupiedMessage()
     {
-        System.out.println("The square is not within the board's boundaries!")
     }
 }
