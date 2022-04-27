@@ -12,4 +12,12 @@ public class GameBoard {
     public Square[] getGameBoard() {
         return gameBoard;
     }
+
+    public Square[] getGameBoard() {
+        return gameBoard;
+    }
+
+    public void setGameBoard(Square[] gameBoard) {
+        this.gameBoard = gameBoard;
+    }
 }

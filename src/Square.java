@@ -1,3 +1,7 @@
+/*
+Every square has a square number which indicates its location and some of them contain a game object,
+which is either a snake's head or a ladder's base.
+ */
 public class Square {
     private int squareNumber;
     private GameObject gameObject;
@@ -29,11 +33,13 @@ public class Square {
         this.gameObject = gameObject;
     }
 
-    public void addGameObject(GameObject gameObject){
+    //Returns true if the game object was added successfully and false otherwise
+    public boolean addGameObject(GameObject gameObject){
         if(this.gameObject!=null){
             this.gameObject.occupiedMessage();
-            return;
+            return false;
         }
         setGameObject(gameObject);
+        return true;
     }
 }
