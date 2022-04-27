@@ -1,5 +1,8 @@
-import java.util.Locale;
-
+/*
+Controls all of the parts of the game.
+In charge of initializing the game,
+and making sure the game runs correctly.
+ */
 public class SnakesAndLaddersGame {
     private final Die die;
     private final Player[] players = new Player[Main.PLAYER_COUNT];
@@ -14,6 +17,7 @@ public class SnakesAndLaddersGame {
         die = new Die(highest, lowest);
     }
 
+    //Initializes the game - creates the players, the game board and its parts.
     public void initializeGame(){
         System.out.println("Initializing the game...");
         String input;
@@ -32,6 +36,7 @@ public class SnakesAndLaddersGame {
         }
     }
 
+    //Handles the given input from the user about the game
     private void handleInput(String[] splitInput){
         if(splitInput.length!=4) return;
         String arg1 = splitInput[3];
@@ -43,6 +48,7 @@ public class SnakesAndLaddersGame {
         }
     }
 
+    //Adds a ladder to the board with a given location and length
     private void addLadder(String baseString, String lengthString){
         int base = Integer.parseInt(baseString);
         int length = Integer.parseInt(lengthString);
@@ -56,6 +62,7 @@ public class SnakesAndLaddersGame {
         this.gameBoard.addGameObject(ladder);
     }
 
+    //Adds a snake to the board with a given location and length
     private void addSnake(String baseString, String lengthString){
         int base = Integer.parseInt(baseString);
         int length = Integer.parseInt(lengthString);
@@ -69,6 +76,7 @@ public class SnakesAndLaddersGame {
         this.gameBoard.addGameObject(snake);
     }
 
+    //Adds a player to the list of players with the given attributes(name, color) if possible
     private void addPlayer(String name, Color color){
         if(playerCount == Main.PLAYER_COUNT){
             System.out.println("The maximal number of playes is five!");
@@ -85,6 +93,7 @@ public class SnakesAndLaddersGame {
         playerCount++;
     }
 
+    //Prints messages to the user
     private boolean printExists(boolean colorExists, boolean nameExists){
         if(colorExists && nameExists){
             System.out.println("The name and the color are already taken!");
@@ -102,7 +111,7 @@ public class SnakesAndLaddersGame {
     }
 
 
-
+    //Starts the game and plays through it
     public String start()
     {
         String winner = "Lion";
@@ -112,12 +121,14 @@ public class SnakesAndLaddersGame {
         {
             System.out.println("------------------------- Round number " + round + " -------------------------");
             for (int i = 0; i < playerCount; i++) {
+                //Moves the player according to the dice roll
                 int rolledValue = die.roll();
                 int lastLocation = players[i].getGamePiece().getLocation();
                 players[i].getGamePiece().addToLocation(rolledValue);
                 System.out.print(players[i].getName() + " rolled " + rolledValue + ". The path to the next square: "
                         + lastLocation + " -> "+ players[i].getGamePiece().getLocation());
                 GameObject gameObject = gameBoard.getGameBoard()[players[i].getGamePiece().getLocation() - 1].getGameObject();
+                //Checks if the piece reached a square that has a ladder's base or a snake's head
                 while(gameObject != null) {
                     players[i].getGamePiece().setLocation(gameObject.getFinish());
                     System.out.print(" -> " + players[i].getGamePiece().getLocation());
