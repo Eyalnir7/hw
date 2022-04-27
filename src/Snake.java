@@ -10,14 +10,14 @@ public class Snake extends  GameObject {
             wrongSquareMessage();
         if (getFinish() > Main.BOARD_END || getFinish() < Main.BOARD_START)
             tooLongMessage();
-        if(getFinish() == Main.BOARD_END)
+        if(getStart() == Main.BOARD_END)
             lastSquareMessage();
 
     }
 
     @Override
     public void occupiedMessage(){
-        System.out.println("The square already contains a head of a snake!");
+        System.out.println("This square contains a head of a snake!");
     }
 
     //Sends a message because the snake is too long

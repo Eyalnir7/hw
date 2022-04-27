@@ -13,12 +13,12 @@ public class Ladder extends GameObject{
 
     @Override
     public void occupiedMessage() {
-        System.out.println("The square already contains a head of a snake!");
+        System.out.println("This square already contains a bottom of a ladder!");
     }
 
     //Sends a message because the ladder is too long
     public void tooLongMessage() throws Exception {
-        System.out.println("The ladder is to long!");
+        System.out.println("The ladder is too long!");
         throw new Exception("ladder too long");
     }
 }

@@ -13,13 +13,13 @@ public class Die {
 
     public Die()
     {
-        this.lowestValue = 0;
-        this.highestValue = 7;
+        this.lowestValue = 1;
+        this.highestValue = 6;
     }
 
     //Returns a random number between two numbers
     public int roll()
     {
-        return Main.rnd.nextInt(lowestValue, highestValue);
+        return Main.rnd.nextInt(lowestValue, highestValue+1);
     }
 }

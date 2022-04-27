@@ -38,7 +38,7 @@ public class GamePiece {
         if(this.location + num > Main.BOARD_END)
             this.location = Main.BOARD_END - (this.location + num)%Main.BOARD_END;
         else if (this.location + num < Main.BOARD_START)
-            this.location = -1 * (this.location + num);
+            this.location = 1;
         else
             this.location = this.location + num;
     }
