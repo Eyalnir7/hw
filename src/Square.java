@@ -29,12 +29,11 @@ public class Square {
         this.gameObject = gameObject;
     }
 
-    public boolean addGameObject(GameObject gameObject){
+    public void addGameObject(GameObject gameObject){
         if(this.gameObject!=null){
             this.gameObject.occupiedMessage();
-            return false;
+            return;
         }
         setGameObject(gameObject);
-        return true;
     }
 }

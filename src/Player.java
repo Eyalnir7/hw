@@ -7,6 +7,10 @@ public class Player {
         this.gamePiece = gamePiece;
     }
 
+    public Player(String name, Color color){
+        this(name, new GamePiece(color));
+    }
+
     public GamePiece getGamePiece() {
         return gamePiece;
     }

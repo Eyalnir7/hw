@@ -1,11 +1,15 @@
 public class GameBoard {
-    private Square[] gameBoard;
+    private final Square[] gameBoard;
 
     public GameBoard(int len){
         this.gameBoard = new Square[len];
     }
 
-    public boolean addGameObject(GameObject gameObject){
-        return this.gameBoard[gameObject.getStart()].addGameObject(gameObject);
+    public void addGameObject(GameObject gameObject){
+        this.gameBoard[gameObject.getStart()].addGameObject(gameObject);
+    }
+
+    public Square[] getGameBoard() {
+        return gameBoard;
     }
 }
