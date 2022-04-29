@@ -40,10 +40,6 @@ public class Main {
             System.out.println("\n********************************************************************************\n");
         }
         System.out.println("All games are over.");
-
-        // Test two dice
-        Die die1 = new Die();
-        Die die2 = new Die(21, 3);
     }
 }
 

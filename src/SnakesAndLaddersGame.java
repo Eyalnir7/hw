@@ -27,7 +27,7 @@ public class SnakesAndLaddersGame {
             if(input.equals("end")){
                 if(playerCount>=2) break;
                 else {
-                    System.out.println("Cannot start the game, there are less then two players!");
+                    System.out.println("Cannot start the game, there are less than two players!");
                     continue;
                 }
             }
@@ -111,6 +111,7 @@ public class SnakesAndLaddersGame {
         return false;
     }
 
+    //Merges two sorted arrays
     void merge(Player arr[], int l, int m, int r)
     {
         // Find sizes of two subarrays to be merged
