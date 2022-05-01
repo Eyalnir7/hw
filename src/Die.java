@@ -20,6 +20,6 @@ public class Die {
     //Returns a random number between two numbers
     public int roll()
     {
-        return Main.rnd.nextInt(lowestValue, highestValue+1);
+        return Main.rnd.nextInt(highestValue - lowestValue + 1) + lowestValue;
     }
 }
