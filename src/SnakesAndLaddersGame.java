@@ -9,23 +9,25 @@ public class SnakesAndLaddersGame {
     private final GameBoard gameBoard = new GameBoard(Main.BOARD_END);
     private int playerCount = 0;
 
-    public SnakesAndLaddersGame(){
+    public SnakesAndLaddersGame() {
         die = new Die();
     }
 
-    public SnakesAndLaddersGame(int lowest, int highest){
+    public SnakesAndLaddersGame(int lowest, int highest) {
         die = new Die(highest, lowest);
     }
 
-    //Initializes the game - creates the players, the game board and its parts.
-    public void initializeGame(){
+    /**
+     * initializing the game by getting data about the players and sets objects on the board
+     */
+    public void initializeGame() {
         System.out.println("Initializing the game...");
         String input;
         String[] splitInput;
-        while(true){
+        while (true) {
             input = Main.scanner.nextLine();
-            if(input.equals("end")){
-                if(playerCount>=2) break;
+            if (input.equals("end")) {
+                if (playerCount >= 2) break;
                 else {
                     System.out.println("Cannot start the game, there are less than two players!");
                     continue;
@@ -34,12 +36,16 @@ public class SnakesAndLaddersGame {
             splitInput = input.split(" ");
             handleInput(splitInput);
         }
-        sortPlayers(players, 0 , playerCount - 1);
+        sortPlayers(players, 0, playerCount - 1);
     }
 
-    //Handles the given input from the user about the game
-    private void handleInput(String[] splitInput){
-        if(splitInput.length!=4) return;
+    /**
+     * Handles the given input from the user about the game
+     *
+     * @param splitInput user input split by " "
+     */
+    private void handleInput(String[] splitInput) {
+        if (splitInput.length != 4) return;
         String arg1 = splitInput[3];
         String arg2 = splitInput[2];
         switch (splitInput[1]) {
@@ -49,77 +55,102 @@ public class SnakesAndLaddersGame {
         }
     }
 
-    //Adds a ladder to the board with a given location and length
-    private void addLadder(String baseString, String lengthString){
+    /**
+     * Adds a ladder to the board with a given location and length
+     *
+     * @param baseString   where the ladder starts
+     * @param lengthString the length of the ladder
+     */
+    private void addLadder(String baseString, String lengthString) {
         int base = Integer.parseInt(baseString);
         int length = Integer.parseInt(lengthString);
         Ladder ladder;
-        try{
+        try {
             ladder = new Ladder(base, length);
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             return;
         }
         this.gameBoard.addGameObject(ladder);
     }
 
-    //Adds a snake to the board with a given location and length
-    private void addSnake(String baseString, String lengthString){
+    /**
+     * Adds a snake to the board with a given location and length
+     *
+     * @param baseString   where the snake starts
+     * @param lengthString the length of the snake
+     */
+    private void addSnake(String baseString, String lengthString) {
         int base = Integer.parseInt(baseString);
         int length = Integer.parseInt(lengthString);
         Snake snake;
-        try{
+        try {
             snake = new Snake(base, length);
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             return;
         }
         this.gameBoard.addGameObject(snake);
     }
 
-    //Adds a player to the list of players with the given attributes(name, color) if possible
-    private void addPlayer(String name, Color color){
-        if(playerCount == Main.PLAYER_COUNT){
+    /**
+     * Adds a player to the list of players with the given attributes(name, color) if possible
+     *
+     * @param name  name of the player
+     * @param color color of the player
+     */
+    private void addPlayer(String name, Color color) {
+        if (playerCount == Main.PLAYER_COUNT) {
             System.out.println("The maximal number of playes is five!");
             return;
         }
         boolean colorExists = false;
         boolean nameExists = false;
-        for (int i = 0; i< playerCount; i++) {
+        for (int i = 0; i < playerCount; i++) {
             if (players[i].getName().equals(name)) nameExists = true;
             if (players[i].getGamePiece().getColor() == color) colorExists = true;
         }
-        if(printExists(colorExists, nameExists)) return;
+        if (printExists(colorExists, nameExists)) return;
         players[playerCount] = new Player(name, color);
         playerCount++;
     }
 
-    //Prints messages to the user
-    private boolean printExists(boolean colorExists, boolean nameExists){
-        if(colorExists && nameExists){
+    /**
+     * Prints messages to the user if the color or the name of the player already exists
+     *
+     * @param colorExists true if color was already picked
+     * @param nameExists  true if name was already taken
+     * @return false if and only if name and color are unique
+     */
+    private boolean printExists(boolean colorExists, boolean nameExists) {
+        if (colorExists && nameExists) {
             System.out.println("The name and the color are already taken!");
             return true;
         }
-        if(nameExists){
+        if (nameExists) {
             System.out.println("The name is already taken!");
             return true;
         }
-        if(colorExists){
+        if (colorExists) {
             System.out.println("The color is already taken!");
             return true;
         }
         return false;
     }
 
-    //Merges two sorted arrays
-    void merge(Player arr[], int l, int m, int r)
-    {
+    /**
+     * Merges two sorted arrays
+     *
+     * @param arr players array
+     * @param l   start of array
+     * @param m   middle of array
+     * @param r   end of array
+     */
+    void merge(Player[] arr, int l, int m, int r) {
         // Find sizes of two subarrays to be merged
         int n1 = m - l + 1;
         int n2 = r - m;
         /* Create temp arrays */
-        Player L[] = new Player[n1];
-        Player R[] = new Player[n2];
+        Player[] L = new Player[n1];
+        Player[] R = new Player[n2];
         /*Copy data to temp arrays*/
         for (int i = 0; i < n1; ++i)
             L[i] = arr[l + i];
@@ -134,8 +165,7 @@ public class SnakesAndLaddersGame {
             if (L[i].getName().compareTo(R[j].getName()) < 0) {
                 arr[k] = L[i];
                 i++;
-            }
-            else {
+            } else {
                 arr[k] = R[j];
                 j++;
             }
@@ -155,12 +185,17 @@ public class SnakesAndLaddersGame {
         }
     }
 
-    //Sorts the players array alphabetically
-    void sortPlayers(Player arr[], int l, int r)
-    {
+    /**
+     * Sorts the players array alphabetically
+     *
+     * @param arr array of the players
+     * @param l   start of the array
+     * @param r   end of the array
+     */
+    void sortPlayers(Player[] arr, int l, int r) {
         if (l < r) {
             // Find the middle point
-            int m =l+ (r-l)/2;
+            int m = l + (r - l) / 2;
             // Sort first and second halves
             sortPlayers(arr, l, m);
             sortPlayers(arr, m + 1, r);
@@ -169,14 +204,16 @@ public class SnakesAndLaddersGame {
         }
     }
 
-    //Starts the game and plays through it
-    public String start()
-    {
+    /**
+     * Starts the game and plays through it
+     *
+     * @return the name of the winner
+     */
+    public String start() {
         String winner = "Lion";
         boolean play = true;
         int round = 1;
-        while(play)
-        {
+        while (play) {
             System.out.println("------------------------- Round number " + round + " -------------------------");
             for (int i = 0; i < playerCount; i++) {
                 //Moves the player according to the dice roll
@@ -184,16 +221,16 @@ public class SnakesAndLaddersGame {
                 int lastLocation = players[i].getGamePiece().getLocation();
                 players[i].getGamePiece().addToLocation(rolledValue);
                 System.out.print(players[i].getName() + " rolled " + rolledValue + ". The path to the next square: "
-                        + lastLocation + " -> "+ players[i].getGamePiece().getLocation());
+                        + lastLocation + " -> " + players[i].getGamePiece().getLocation());
                 GameObject gameObject = gameBoard.getGameBoard()[players[i].getGamePiece().getLocation() - 1].getGameObject();
                 //Checks if the piece reached a square that has a ladder's base or a snake's head
-                while(gameObject != null) {
+                while (gameObject != null) {
                     players[i].getGamePiece().setLocation(gameObject.getFinish());
                     System.out.print(" -> " + players[i].getGamePiece().getLocation());
                     gameObject = gameBoard.getGameBoard()[players[i].getGamePiece().getLocation() - 1].getGameObject();
                 }
                 System.out.println("");
-                if(players[i].getGamePiece().getLocation() == Main.BOARD_END) {
+                if (players[i].getGamePiece().getLocation() == Main.BOARD_END) {
                     winner = players[i].getName();
                     play = false;
                     break;
@@ -201,14 +238,13 @@ public class SnakesAndLaddersGame {
             }
             System.out.println("");
             System.out.println("Players positions on the board:");
-            for(int i =0; i<playerCount; i++){
-                System.out.println(players[i].getName()+
+            for (int i = 0; i < playerCount; i++) {
+                System.out.println(players[i].getName() +
                         " is in square number "
-                        +players[i].getGamePiece().getLocation());
+                        + players[i].getGamePiece().getLocation());
             }
             round++;
         }
         return winner;
     }
-
 }
