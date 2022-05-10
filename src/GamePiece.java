@@ -27,11 +27,13 @@ public class GamePiece {
         this.location = location;
     }
 
-    /*Moves the game pieces num steps forward.
-    If the piece reaches the end of the board and still has x steps to go forward
-    then it will go x steps backwards.
-    If the piece reaches the beginning of the board and still has x steps to go backward
-    then it will go x steps forward.
+    /**
+     * Moves the game pieces num steps forward.
+     * If the piece reaches the end of the board and still has x steps to go forward
+     * then it will go x steps backwards.
+     * If the piece reaches the beginning of the board and still has x steps to go backward
+     * then it will go x steps forward.
+     * @param num
      */
     public void addToLocation(int num)
     {

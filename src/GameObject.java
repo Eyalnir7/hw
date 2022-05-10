@@ -26,13 +26,18 @@ public class GameObject {
         this.finish = finish;
     }
 
-    //Sends a message because the square is outside the board's boundaries
+    /**
+     * Sends a message because the square is outside the board's boundaries
+     * @throws Exception
+     */
     public void wrongSquareMessage() throws Exception{
         System.out.println("The square is not within the board's boundaries!");
         throw new Exception("square out of bounds");
     }
 
-    //Sends a message because the square already contains a snake's head or a ladder's base
+    /**
+     * Sends a message because the square already contains a snake's head or a ladder's base
+     */
     public void occupiedMessage()
     {
         System.out.println("not supposed to be here :)");

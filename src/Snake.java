@@ -16,17 +16,27 @@ public class Snake extends  GameObject {
     }
 
     @Override
+    /**
+     * Prints a message that says the square is already occupied
+     */
     public void occupiedMessage(){
         System.out.println("This square contains a head of a snake!");
     }
 
-    //Sends a message because the snake is too long
+    /**
+     * Sends a message because the snake is too long
+     * @throws Exception
+     */
     public void tooLongMessage() throws Exception {
         System.out.println("The snake is too long!");
         throw new Exception("snake too long");
     }
 
-    //Sends a message because a snake cannot be added on the last square
+
+    /**
+     * Sends a message because a snake cannot be added on the last square
+     * @throws Exception
+     */
     public void lastSquareMessage() throws Exception{
         System.out.println("You cannot add a snake in the last square!");
         throw new Exception("last square snake");

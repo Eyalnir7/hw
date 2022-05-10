@@ -17,7 +17,10 @@ public class Die {
         this.highestValue = 6;
     }
 
-    //Returns a random number between two numbers
+    /**
+     * Returns a random number between two numbers
+     * @return
+     */
     public int roll()
     {
         return Main.rnd.nextInt(highestValue - lowestValue + 1) + lowestValue;

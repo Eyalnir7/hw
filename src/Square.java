@@ -33,7 +33,11 @@ public class Square {
         this.gameObject = gameObject;
     }
 
-    //Returns true if the game object was added successfully and false otherwise
+    /**
+     * Returns true if the game object was added successfully and false otherwise
+     * @param gameObject
+     * @return
+     */
     public boolean addGameObject(GameObject gameObject){
         if(this.gameObject!=null){
             this.gameObject.occupiedMessage();
