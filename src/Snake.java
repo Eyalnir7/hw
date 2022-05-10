@@ -25,7 +25,7 @@ public class Snake extends  GameObject {
 
     /**
      * Sends a message because the snake is too long
-     * @throws Exception
+     * @throws Exception the exception for snake too long
      */
     public void tooLongMessage() throws Exception {
         System.out.println("The snake is too long!");
@@ -35,7 +35,7 @@ public class Snake extends  GameObject {
 
     /**
      * Sends a message because a snake cannot be added on the last square
-     * @throws Exception
+     * @throws Exception the exception for illegal placement for a snake on the last square
      */
     public void lastSquareMessage() throws Exception{
         System.out.println("You cannot add a snake in the last square!");

@@ -28,7 +28,7 @@ public class GameObject {
 
     /**
      * Sends a message because the square is outside the board's boundaries
-     * @throws Exception
+     * @throws Exception the exception for square out of bounds
      */
     public void wrongSquareMessage() throws Exception{
         System.out.println("The square is not within the board's boundaries!");

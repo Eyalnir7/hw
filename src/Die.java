@@ -19,7 +19,7 @@ public class Die {
 
     /**
      * Returns a random number between two numbers
-     * @return
+     * @return the random number
      */
     public int roll()
     {

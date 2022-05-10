@@ -35,8 +35,8 @@ public class Square {
 
     /**
      * Returns true if the game object was added successfully and false otherwise
-     * @param gameObject
-     * @return
+     * @param gameObject the game object to be inserted
+     * @return whether the insertion was successful or not
      */
     public boolean addGameObject(GameObject gameObject){
         if(this.gameObject!=null){

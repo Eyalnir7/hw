@@ -10,7 +10,7 @@ public class GameBoard {
 
     /**
      * Adds a game object to the game
-     * @param gameObject
+     * @param gameObject the object to be inserted
      */
     public void addGameObject(GameObject gameObject){
         this.gameBoard[gameObject.getStart()-1].addGameObject(gameObject);

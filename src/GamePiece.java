@@ -33,7 +33,7 @@ public class GamePiece {
      * then it will go x steps backwards.
      * If the piece reaches the beginning of the board and still has x steps to go backward
      * then it will go x steps forward.
-     * @param num
+     * @param num the number of moves to move
      */
     public void addToLocation(int num)
     {

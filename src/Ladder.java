@@ -21,7 +21,7 @@ public class Ladder extends GameObject{
 
     /**
      * Sends a message because the ladder is too long
-     * @throws Exception
+     * @throws Exception the exception for ladder to long
      */
     public void tooLongMessage() throws Exception {
         System.out.println("The ladder is too long!");
